@@ -12,7 +12,7 @@ import {
   getIsLoading,
 } from 'redux/contacts/contactsSelectors';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const contacts = useSelector(getContacts);
   const filterValue = useSelector(getFilterValue);
   const isLoading = useSelector(getIsLoading);
@@ -40,8 +40,9 @@ export const ContactsPage = () => {
           <ContactList contacts={findPhones()} />
         </>
       )}
-      {/* {error && <p>Ooops.. Something went wrong... Try to reload the page</p>} */}
       {isLoading && <Loader />}
     </Container>
   );
 };
+
+export default ContactsPage;

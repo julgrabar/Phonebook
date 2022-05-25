@@ -1,17 +1,18 @@
 import { Global } from './Global';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
-import { HomePage } from 'views/HomeView';
-import { LoginPage } from 'views/LoginView';
-import { RegisterPage } from 'views/RegisterView';
-import { ContactsPage } from 'views/ContactsView';
-import { NotFoundPage } from 'views/NotFoundPage';
 import { PrivateRoute } from './CustomRoutes/PrivateRoute';
 import { PublicRoute } from './CustomRoutes/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken, getIsLogged } from '../redux/auth/authSelectors';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { fetchCurrentUserQuery } from 'redux/auth/authOperations';
+
+const RegisterPage = lazy(() => import('views/RegisterView'));
+const LoginPage = lazy(() => import('views/LoginView'));
+const ContactsPage = lazy(() => import('views/ContactsView'));
+const HomePage = lazy(() => import('views/HomeView'));
+const NotFoundPage = lazy(() => import('views/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();

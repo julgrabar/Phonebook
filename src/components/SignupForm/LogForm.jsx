@@ -12,7 +12,6 @@ export const LoginForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(loginQuery(values));
-    console.log(values);
     resetForm();
   };
 

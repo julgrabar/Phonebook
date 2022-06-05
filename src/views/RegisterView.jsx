@@ -2,9 +2,8 @@ import { StyledForm } from 'components/Contact form/ContactForm.styled';
 import { Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { registerQuery } from 'redux/auth/authOperations';
-// import { useSignupMutation } from 'redux/authSlice';
+
 const RegisterPage = () => {
-  // const [signupUser] = useSignupMutation();
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -14,9 +13,7 @@ const RegisterPage = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(registerQuery(values));
-    // signupUser(values);
     resetForm();
   };
 

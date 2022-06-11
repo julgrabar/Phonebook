@@ -1,4 +1,4 @@
-import { ContactForm } from 'components/Contact form/ContactForm';
+import { NewContactForm } from 'components/Contact form/NewContactForm';
 import { ContactList } from 'components/Contact list/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container } from 'components/Global';
@@ -32,7 +32,7 @@ const ContactsPage = () => {
 
   return (
     <Container>
-      <ContactForm />
+      <NewContactForm />
 
       {contacts && contacts.length > 0 && (
         <>

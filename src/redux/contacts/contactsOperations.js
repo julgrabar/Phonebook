@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
-import { fetchContacts, deleteContact, addContact } from "services/api-service";
+import { fetchContacts, deleteContact, addContact, changeContact } from "services/api-service";
 
 
 export const fetchContactsNames = createAsyncThunk("contacts/fetchContacts", 
@@ -39,3 +39,19 @@ async (contact, {rejectWithValue})=>{
     }
 }
 ) 
+
+export const changeContactRequest = createAsyncThunk(
+    "contacts/changeContact",
+    async (contact, {rejectWithValue}) => {
+        try {
+            const response = await changeContact(contact)
+             toast.success("Contact has been changed")
+             return response;
+             
+        } catch (error) {
+            toast.error("Contact has not been changed. Try to reload the page.")
+            console.log(error)
+        }
+
+    }
+)

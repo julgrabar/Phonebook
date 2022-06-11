@@ -35,3 +35,8 @@ export const fetchCurrentUser = async (user) => {
     const response = await axios.get("users/current", user)
     return response.data
 }
+
+export const changeContact = async ({id,number,name}) => {
+    const response = await axios.patch(`contacts/${id}`, {name,number})
+    return response.data
+}

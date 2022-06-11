@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContactRequest } from 'redux/contacts/contactsOperations';
 import { getContacts } from 'redux/contacts/contactsSelectors';
 
-export const ContactForm = () => {
+export const NewContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 

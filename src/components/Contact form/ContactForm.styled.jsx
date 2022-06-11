@@ -25,3 +25,31 @@ export const StyledForm = styled(Form)`
     margin-top: 15px;
   }
 `;
+
+export const EditForm = styled(Form)`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 100%;
+  }
+
+  .submit-btn {
+    width: 100px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-top: 15px;
+    color: black;
+    margin: 15px auto 0 auto;
+  }
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+  }
+`;

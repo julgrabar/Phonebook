@@ -20,9 +20,12 @@ export const List = styled.ul`
     background-color: #fff;
     border-radius: 20px;
     border: none;
-    background-color: darkred;
+    background-color: transparent;
     color: white;
     cursor: pointer;
+  }
+
+  .edit-btn {
     margin-left: auto;
   }
 `;

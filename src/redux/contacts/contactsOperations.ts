@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 import { fetchContacts, deleteContact, addContact, changeContact } from "services/api-service";
+import { IContact, IContactFormData } from "types/types";
 
 
 export const fetchContactsNames = createAsyncThunk("contacts/fetchContacts", 
@@ -16,7 +17,7 @@ async (_, {rejectWithValue})=>{
 )
 
 export const deleteContactRequest = createAsyncThunk("contacts/deleteContact",
-async (id, {rejectWithValue})=>{
+async (id: string, {rejectWithValue})=>{
     try{
         await deleteContact(id);
         return id;
@@ -28,7 +29,7 @@ async (id, {rejectWithValue})=>{
 ) 
 
 export const addContactRequest = createAsyncThunk("contacts/addContact",
-async (contact, {rejectWithValue})=>{
+async (contact: IContactFormData, {rejectWithValue})=>{
     try{
         const response = await addContact(contact)
           toast.success("Contact has been added")
@@ -42,7 +43,7 @@ async (contact, {rejectWithValue})=>{
 
 export const changeContactRequest = createAsyncThunk(
     "contacts/changeContact",
-    async (contact, {rejectWithValue}) => {
+    async (contact: IContact, {rejectWithValue}) => {
         try {
             const response = await changeContact(contact)
              toast.success("Contact has been changed")

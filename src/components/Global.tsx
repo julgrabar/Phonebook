@@ -6,9 +6,6 @@ export const Global = createGlobalStyle`
     }
 
     body{
-        /* display: flex;
-        justify-content: center;
-        align-items: center; */
         background-color: #000066;
         color: #ffffff
     }

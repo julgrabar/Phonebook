@@ -1,4 +1,5 @@
 import { Container } from 'components/Global';
+import React from 'react';
 import { Bar } from './AppBar.styled';
 import { Navigation } from './NavBar';
 

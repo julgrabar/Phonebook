@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import { login, logout, register, fetchCurrentUser } from "services/api-service";
+import { ILoginData, ISignUpData } from "types/types";
 
 
 
 const token = {
-  set(token) {
+  set(token:string) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
@@ -15,21 +16,23 @@ const token = {
 };
 
 export const registerQuery = createAsyncThunk("users/signup", 
-async (user, {rejectWithValue})=>{
+async (user: ISignUpData, {rejectWithValue})=>{
     try{
         const registeredUser = await register(user);
         toast.success("You have been successfully signed up")
         token.set(registeredUser.token)
         return registeredUser
     } catch (error){
-        toast.error(error?.response?.data?.errors?.password?.message || "Sign up error. Probably this email already exists")
-        return rejectWithValue(error.message)
+        if(error instanceof AxiosError){
+            toast.error(error?.response?.data?.errors?.password?.message || "Sign up error. Probably this email already exists")
+        }
+        return rejectWithValue(error)
     }
 }
 )
 
 export const loginQuery = createAsyncThunk("users/login", 
-async (user, {rejectWithValue})=>{
+async (user: ILoginData, {rejectWithValue})=>{
     try{
         const loginedUser = await login(user);
         token.set(loginedUser.token)
@@ -37,7 +40,7 @@ async (user, {rejectWithValue})=>{
         return loginedUser
     } catch (error){
         toast.error("Incorrect login or password")
-        return rejectWithValue(error.message)
+        return rejectWithValue(error)
     }
 }
 )
@@ -57,7 +60,7 @@ async (_, {rejectWithValue})=>{
 )
 
 export const fetchCurrentUserQuery = createAsyncThunk("users/current", 
-async (persistedToken, thunkAPI)=>{
+async (persistedToken: string, thunkAPI)=>{
     token.set(persistedToken)
     try{
         const user = await fetchCurrentUser();

@@ -1,17 +1,28 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field} from 'formik';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { changeContactRequest } from 'redux/contacts/contactsOperations';
+import { AppDispatch } from 'redux/store';
 import { EditForm } from './ContactForm.styled';
+import { IContactFormData } from 'types/types';
 
-export const EditContactForm = ({ id, name, number, setEdit }) => {
-  const dispatch = useDispatch();
+interface IProps {
+  id: string,
+  name: string,
+  number: string,
+  setEdit: (isEdit: boolean)=> void
+}
 
-  const initialValues = {
+
+export const EditContactForm = ({ id, name, number, setEdit }: IProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const initialValues: IContactFormData = {
     name,
     number,
   };
 
-  const handleSubmit = ({ name, number }) => {
+  const handleSubmit = ({ name, number }: IContactFormData) => {
     const contact = {
       id,
       name,
@@ -22,7 +33,6 @@ export const EditContactForm = ({ id, name, number, setEdit }) => {
     setEdit(false);
   };
 
-  const editContact = ({ name, number }) => {};
 
   return (
     <Formik onSubmit={handleSubmit} initialValues={initialValues}>

@@ -1,24 +1,28 @@
-import { Formik, Field } from 'formik';
+import { Formik, Field, FormikHelpers } from 'formik';
 import { StyledForm } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactRequest } from 'redux/contacts/contactsOperations';
 import { getContacts } from 'redux/contacts/contactsSelectors';
+import React from 'react';
+import { AppDispatch } from 'redux/store';
+import { IContact, IContactFormData } from 'types/types';
+
 
 export const NewContactForm = () => {
-  const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
+  const contacts: IContact[] = useSelector(getContacts);
+  const dispatch = useDispatch<AppDispatch>();
 
   const initialValues = {
     name: '',
     number: '',
   };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values:IContactFormData, { resetForm }:FormikHelpers<IContactFormData>) => {
     addNewContact(values);
     resetForm();
   };
 
-  const addNewContact = ({ name, number }) => {
+  const addNewContact = ({ name, number }:IContactFormData) => {
     if (
       contacts.map(item => item.name.toLowerCase()).includes(name.toLowerCase())
     ) {

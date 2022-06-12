@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/195.1620460f.chunk.js","mappings":"mKAMA,UAJqB,WACnB,OAAO","sources":["views/NotFoundPage.tsx"],"sourcesContent":["import React from \"react\";\n\nconst NotFoundPage = () => {\n  return <h1>This page doesn't exist</h1>;\n};\n\nexport default NotFoundPage;\n"],"names":[],"sourceRoot":""}

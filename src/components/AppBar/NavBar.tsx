@@ -1,14 +1,16 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logoutQuery } from 'redux/auth/authOperations';
 import { getIsLogged, getUser } from 'redux/auth/authSelectors';
+import { AppDispatch } from 'redux/store';
 import { UserBar } from './AppBar.styled';
 import { Nav } from './AppBar.styled';
 
 export const Navigation = () => {
   const isUserLogged = useSelector(getIsLogged);
   const { name } = useSelector(getUser);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <Nav>

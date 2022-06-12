@@ -1,12 +1,15 @@
 import { EditContactForm } from 'components/Contact form/EditContactForm';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContactRequest } from 'redux/contacts/contactsOperations';
+import { AppDispatch } from 'redux/store';
+import { IContact} from 'types/types';
 
-export const ContactsItem = ({ id, name, number }) => {
+export const ContactsItem = ({ id, name, number }:IContact) => {
   const [edit, setEdit] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <li>

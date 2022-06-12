@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Loader = styled.div`
+export const Loader = styled.div<{ margin?: string }>`
   margin: ${props => props.margin ?? '0 auto'};
   font-size: 10px;
   width: 30px;

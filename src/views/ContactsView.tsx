@@ -1,8 +1,8 @@
 import { NewContactForm } from 'components/Contact form/NewContactForm';
-import { ContactList } from 'components/Contact list/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container } from 'components/Global';
 import { Loader } from 'components/Loader/Loader.stayled';
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContactsNames } from 'redux/contacts/contactsOperations';
@@ -11,12 +11,15 @@ import {
   getContacts,
   getIsLoading,
 } from 'redux/contacts/contactsSelectors';
+import { AppDispatch } from 'redux/store';
+import { ContactList } from '../components/Contact list/ContactList';
+import { IContact } from 'types/types';
 
 const ContactsPage = () => {
-  const contacts = useSelector(getContacts);
+  const contacts: IContact[] = useSelector(getContacts);
   const filterValue = useSelector(getFilterValue);
   const isLoading = useSelector(getIsLoading);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchContactsNames());

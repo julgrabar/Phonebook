@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getToken, getIsLogged } from '../redux/auth/authSelectors';
 import { lazy, useEffect } from 'react';
 import { fetchCurrentUserQuery } from 'redux/auth/authOperations';
+import React from 'react';
+import { AppDispatch } from 'redux/store';
 
 const RegisterPage = lazy(() => import('views/RegisterView'));
 const LoginPage = lazy(() => import('views/LoginView'));
@@ -15,7 +17,7 @@ const HomePage = lazy(() => import('views/HomeView'));
 const NotFoundPage = lazy(() => import('views/NotFoundPage'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const token = useSelector(getToken);
   const isLogged = useSelector(getIsLogged);
 

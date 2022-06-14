@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <PersistGate persistor={persistor}>
       <Provider store={store}>
-        <BrowserRouter basename='/goit-react-hw-08-phonebook-AsynkThunk/'>
+        <BrowserRouter basename='/Phonebook/'>
           <App />
         </BrowserRouter>
       </Provider>
